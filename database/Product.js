@@ -1,7 +1,11 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 import { randomUUID } from 'crypto'
+import Category from "./Category.js";
+import Brand from "./Brand.js";
 
-const productSchema = new mongoose.Schema({
+const Schema = mongoose.Schema;
+
+const productSchema = new Schema({
     _id: {
         type: String,
         default: randomUUID()

@@ -14,12 +14,9 @@ export default class categoryController {
     async update() {
         return await category.updateOne({ id: this.category.id }, {
             nome: this.category.nome,
-            nome: this.category.descricao,
+            descricao: this.category.descricao,
             updateAt: Date.now()
         });
-        // const categoty = await category.findOne({ id: this.category.id });
-        // const update = { nome: this.category.nome, updateAt: Date.now() };
-        // return await categoty.updateOne(update);
     }
 
     async delete() {
