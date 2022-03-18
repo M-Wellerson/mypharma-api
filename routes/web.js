@@ -120,7 +120,7 @@ routes.post("/cadastro", async (req, res) => {
         res.json(savedUser);
 
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ message: error.message });
     }
 });
 
@@ -155,7 +155,7 @@ routes.post("/login", async (req, res) => {
             },
         });
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ message: error.message });
     }
 });
 
