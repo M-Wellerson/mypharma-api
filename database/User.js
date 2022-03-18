@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
-import { randomUUID } from 'crypto'
+import { v4 as uuidv4 } from 'uuid';
 const SALT_WORK_FACTOR = 10;
 
 const userSchema = new mongoose.Schema({
     _id: {
         type: String,
-        default: randomUUID()
+        default: uuidv4()
     },
     nome: {
         type: String,

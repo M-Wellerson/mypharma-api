@@ -2,7 +2,7 @@ import Brand from "../database/Brand.js";
 
 export default class brandController {
     constructor(resquet) {
-        this.Brand = resquet;
+        this.brand = resquet;
     }
     async create() {
         return await Brand.create({
@@ -31,6 +31,6 @@ export default class brandController {
     }
 
     async getMany() {
-        return await Brand.find({ $or: [{ id: this.brand.id }, { nome: this.brand.nome }] });
+        return await Brand.find();
     }
 }
