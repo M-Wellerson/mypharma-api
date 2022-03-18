@@ -39,6 +39,6 @@ export default class categoryController {
     }
 
     async getMany() {
-        return await Product.find({ $or: [{ id: this.product.id }, { nome: this.product.nome }] });
+        return await Product.find();
     }
 }
