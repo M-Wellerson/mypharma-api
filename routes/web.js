@@ -32,10 +32,17 @@ routes.get("/categoria", validateJwt, async (req, res) => {
 });
 
 routes.put("/categoria/:id", validateJwt, async (req, res) => {
-    const category = new categoryController(req.body);
+    const category = new categoryController(req.params);
     const update = await category.update();
 
     return res.status(200).send(update);
+});
+
+routes.delete("/categoria/:id", validateJwt, async (req, res) => {
+    const category = new categoryController(req.params);
+    await category.delete();
+
+    return res.status(200).send({ message: "Apagado com sucesso!" });
 });
 
 //Product Routers
@@ -61,10 +68,17 @@ routes.get("/produto", validateJwt, async (req, res) => {
 });
 
 routes.put("/produto/:id", validateJwt, async (req, res) => {
-    const product = new productController(req.body);
+    const product = new productController(req.params);
     const update = await product.update();
 
     return res.status(200).send(update);
+});
+
+routes.delete("/produto/:id", validateJwt, async (req, res) => {
+    const product = new productController(req.params);
+    await product.delete();
+
+    return res.status(200).send({ message: "Apagado com sucesso!" });
 });
 
 //Brand Routers
@@ -90,10 +104,17 @@ routes.get("/marca", validateJwt, async (req, res) => {
 });
 
 routes.put("/marca/:id", validateJwt, async (req, res) => {
-    const brand = new brandController(req.body);
+    const brand = new brandController(req.params);
     const update = await brand.update();
 
     return res.status(200).send(update);
+});
+
+routes.delete("/marca/:id", validateJwt, async (req, res) => {
+    const brand = new brandController(req.params);
+    await brand.delete();
+
+    return res.status(200).send({ message: "Apagado com sucesso!" });
 });
 
 routes.post("/cadastro", async (req, res) => {
