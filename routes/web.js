@@ -110,14 +110,21 @@ routes.post("/cadastro", async (req, res) => {
                 .status(400)
                 .json({ message: "Conta já existe com esse e-mail!" });
         }
-
         const newUser = new User({
             email: email,
             senha: senha,
             nome: nome,
         });
-        const savedUser = await newUser.save();
-        res.json(savedUser);
+        const token = jsonwebtoken.sign({ data: newUser._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        await newUser.save();
+        res.json({
+            token,
+            user: {
+                id: newUser._id,
+                email: newUser.email,
+                nome: newUser.nome,
+            },
+        });
 
     } catch (error) {
         res.status(500).json({ message: error.message });
