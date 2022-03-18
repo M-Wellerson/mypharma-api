@@ -17,21 +17,21 @@ routes.post('/categoria', validateJwt, async (req, res) => {
     return res.status(200).json({ message: "Criado com sucesso!" });
 });
 
-routes.get("/categoria/:id", async (req, res) => {
+routes.get("/categoria/:id", validateJwt, async (req, res) => {
     const category = new categoryController(req.body);
     const search = await category.getOne();
 
     return res.status(200).send(search);
 });
 
-routes.get("/categoria", async (req, res) => {
+routes.get("/categoria", validateJwt, async (req, res) => {
     const category = new categoryController(req.body);
     let search = await category.getMany();
 
     return res.status(200).send(search);
 });
 
-routes.put("/categoria/:id", async (req, res) => {
+routes.put("/categoria/:id", validateJwt, async (req, res) => {
     const category = new categoryController(req.body);
     const update = await category.update();
 
@@ -40,27 +40,27 @@ routes.put("/categoria/:id", async (req, res) => {
 
 //Product Routers
 
-routes.post('/produto', async (req, res) => {
+routes.post('/produto', validateJwt, async (req, res) => {
     const product = new productController(req.body);
     await product.create();
     return res.status(200).json({ message: "Criado com sucesso!" });
 });
 
-routes.get("/produto/:id", async (req, res) => {
+routes.get("/produto/:id", validateJwt, async (req, res) => {
     const product = new productController(req.body);
     const search = await product.getOne();
 
     return res.status(200).send(search);
 });
 
-routes.get("/produto", async (req, res) => {
+routes.get("/produto", validateJwt, async (req, res) => {
     const product = new productController(req.body);
     let search = await product.getMany();
 
     return res.status(200).send(search);
 });
 
-routes.put("/produto/:id", async (req, res) => {
+routes.put("/produto/:id", validateJwt, async (req, res) => {
     const product = new productController(req.body);
     const update = await product.update();
 
@@ -69,27 +69,27 @@ routes.put("/produto/:id", async (req, res) => {
 
 //Brand Routers
 
-routes.post('/marca', async (req, res) => {
+routes.post('/marca', validateJwt, async (req, res) => {
     const brand = new brandController(req.body);
     await brand.create();
     return res.status(200).json({ message: "Criado com sucesso!" });
 });
 
-routes.get("/marca/:id", async (req, res) => {
+routes.get("/marca/:id", validateJwt, async (req, res) => {
     const brand = new brandController(req.body);
     const search = await brand.getOne();
 
     return res.status(200).send(search);
 });
 
-routes.get("/marca", async (req, res) => {
+routes.get("/marca", validateJwt, async (req, res) => {
     const brand = new brandController(req.body);
     let search = await brand.getMany();
 
     return res.status(200).send(search);
 });
 
-routes.put("/marca/:id", async (req, res) => {
+routes.put("/marca/:id", validateJwt, async (req, res) => {
     const brand = new brandController(req.body);
     const update = await brand.update();
 
