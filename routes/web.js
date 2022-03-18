@@ -5,10 +5,13 @@ import brandController from "./../controller/brandController.js";
 import User from "../database/User.js";
 import jsonwebtoken from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import validateJwt from "../middleware/validateJwt.js";
+import cors from "cors";
 
 const routes = express.Router();
 
-routes.post('/categoria', async (req, res) => {
+routes.use(cors())
+routes.post('/categoria', validateJwt, async (req, res) => {
     const category = new categoryController(req.body);
     await category.create();
     return res.status(200).json({ message: "Criado com sucesso!" });
